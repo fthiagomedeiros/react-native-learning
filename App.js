@@ -132,11 +132,18 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
+import {fetchAddress} from './api/apiCep';
 
 class App extends Component {
   state = {
     count: 0,
+    neighborhood: 'No data loaded',
   };
+
+  async componentDidMount(): void {
+    let value = await fetchAddress(58401470);
+    this.setState({neighborhood: value});
+  }
 
   onPress = () => {
     this.setState({
@@ -152,6 +159,7 @@ class App extends Component {
         </TouchableOpacity>
         <View style={styles.countContainer}>
           <Text>You clicked {this.state.count} times</Text>
+          <Text>{this.state.neighborhood}</Text>
         </View>
       </View>
     );

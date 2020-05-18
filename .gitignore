@@ -5,6 +5,7 @@
 # Xcode
 #
 build/
+/assets/.png-cache/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
